@@ -18,7 +18,9 @@ A meme that captures how I currently feel about my university studies is:
 
 Random fact/story (totally not to meet my project requirements ;D): I have befriended a community cat, aka a _Felis Catus_, who chills around my home. 
 
-For more information about community cats or cat's behaviour: ![](https://www.alleycat.org/resources/feral-and-stray-cats-an-important-difference/)
+For more information about community cats or cat behavior: 
+1. [https://www.aspca.org/helping-people-pets/shelter-intake-and-surrender/closer-look-community-cats ](https://www.alleycat.org/resources/feral-and-stray-cats-an-important-difference/)
+2. https://www.aspca.org/helping-people-pets/shelter-intake-and-surrender/closer-look-community-cats
 
 Here's a GIF to illustrate my relationship with the cat: 
 
