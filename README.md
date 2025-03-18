@@ -3,13 +3,13 @@ This is my repo for STATS 220.
 
 **A little about me:**
 
-**What I am studying:**
+1. **What I am studying:**
 - I am undertaking a degree in information and technology management with statistics.
 
-**Why I'm taking STATS 220:**
+2. **Why I'm taking STATS 220:**
 - I am taking STATS 220 because it is one of my course requirements and looks interesting.
 
-**What am I interested in STATS 220:**
+3. **What am I interested in STATS 220:**
 - I am interested in learning about interpreting statistical models/data and applying them to the real world.
   
 A meme that captures how I currently feel about my university studies is:
