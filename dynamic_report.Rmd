@@ -23,7 +23,7 @@ h1, h2 {
 
 ## **What's going on with this data?**
 
-The data measures the different observations made on passengers bus rides. These variables include:
+The data measures the different observations made on passengers' bus rides. These variables include:
 
 **Bus crowd level** - how crowded is the bus during the bus ride?
 
@@ -31,19 +31,19 @@ The data measures the different observations made on passengers bus rides. These
 
 The number of passengers not in their seats.
 
-Therefore, this data can be used to see if there's any trend, pattern, or relationship between these variables. I will do this with the help of tidyverse and magickpack via relevant code (finding min, max, or mean) and bar graphs. 
+Therefore, this data can be used to see if there's any trend, pattern, or relationship between these variables. I will do this with the help of tidyverse and magickpack via relevant code (finding min, max, or mean) and illustrate my findings via bar graphs.  
 
 ## **What I have found:**
 
 The data shows that as the bus crowd level increases, the number of passengers not in their seats tends to increase.
 
-The **minimum number** of passengers not at their seat is **0** for both mostly empty and moderate level, **1** for fairly crowded, **2** for crowded, and **7** for overcrowded.
+The **minimum number** of passengers not at their seats is **0** for both mostly empty and moderate level, **1** for fairly crowded, **2** for crowded, and **7** for overcrowded.
 
 The **maximum number** of passengers not at their seats is **0** for mostly empty, **1** for moderate level, **2** fairly crowded, **3** for crowded, and **7** at a bus crowd level of overcrowded.
 
-The data also shows that as the bus vibe level changes (level increases), the number of passengers not being at their seat tends to increase. 
+The data also shows that as the bus vibe level changes (level increases), the number of passengers not being in their seats tends to increase. 
 
-The **minimum number** of passengers not at their seat is **0** for average and quite/calm and **1** for fairly noisy bus vibe level.
+The **minimum number** of passengers not at their seats is **0** for average and quiet/calm and **1** for fairly noisy bus vibe level.
 
 The **maximum number** of passengers not at their seats is **0** for mostly empty, **1** for moderate level, **2** for fairly crowded, **3** for crowded, and **7** at a fairly noisy bus vibe level.
 
@@ -107,7 +107,7 @@ min_not_seated <- latest_data %>%
 
 print(min_not_seated)
 
-#maximum passengers not at their seats      
+#maximum passengers not in their seats      
 max_not_standing <- latest_data %>%
   group_by(bus_vibe) %>%
   summarise(max_not_standing = max(passengers_seated))
