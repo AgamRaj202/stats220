@@ -1,0 +1,92 @@
+---
+title: "Bus Ride Cleanliness Observations"
+output: html_document
+---
+
+<script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo=FALSE, message=FALSE, warning=FALSE, error=FALSE)
+library(tidyverse)
+logged_data <- read_csv("https://docs.google.com/spreadsheets/d/e/2PACX-1vStQUXHFwC3pxPBh8PjKL2Q3C26nTUpSafigtUiamcu9f2KCqDVmx73W97z9ew2Jo4YysrDUtmk8WU1/pub?output=csv")
+```
+
+```{js}
+$(function() {
+  $(".level2").css('visibility', 'hidden');
+  $(".level2").first().css('visibility', 'visible');
+  $(".container-fluid").height($(".container-fluid").height() + 300);
+  $(window).on('scroll', function() {
+    $('h2').each(function() {
+      var h2Top = $(this).offset().top - $(window).scrollTop();
+      var windowHeight = $(window).height();
+      if (h2Top >= 0 && h2Top <= windowHeight / 2) {
+        $(this).parent('div').css('visibility', 'visible');
+      } else if (h2Top > windowHeight / 2) {
+        $(this).parent('div').css('visibility', 'hidden');
+      }
+    });
+  });
+})
+```
+
+```{css}
+.figcaption {display: none}
+body {
+  font-family: "Times New Roman", cursive;
+  background-color: #898989;
+  color: #F8F7F7;
+}
+h1, h2 {
+  color: #F8F7F7;
+  font-weight: bold;
+  text-decoration: underline; 
+}
+```
+
+## What's going on with this data?
+![animated GIF](animated_graphs.gif)
+
+## The First Graph
+![My first graph](plot1.png)
+```{r}
+# finding the mean cleanliness's rating (1-10) for each category (yes/no)
+mean_yes <- mean(logged_data$cleanliness_scale[logged_data$litter_noticed == "Yes"], na.rm = TRUE)
+mean_no <- mean(logged_data$cleanliness_scale[logged_data$litter_noticed == "No"], na.rm = TRUE)
+```
+
+For the first graph shows a box-plot of comparing the cleanliness scale ratings from 1-10 and the observed hygiene risk during the bus rides. From this, as the hygiene risk is observed, the cleanliness scale tends to be lower where the mean rating is approximately `r round(mean_yes, 2)`. Whereas, as the hygiene risk is not observed, the cleanliness scale tends to be higher where the mean rating is approximately `r round(mean_no, 2)`. Since NA was an option in my survey, there was no response data for NA, therefore, it remains blank until there is a  response. 
+
+## The Second Graph
+
+![My second graph](plot2.png)
+```{r}
+# finding the mean cleanliness's rating (1-10) for each category (yes/no)
+mean_no_risk <- mean(logged_data$cleanliness_scale[logged_data$hygiene_severity == "NA"], na.rm = TRUE)
+mean_minor <- mean(logged_data$cleanliness_scale[logged_data$hygiene_severity == "Minor"], na.rm = TRUE)
+mean_moderate <- mean(logged_data$cleanliness_scale[logged_data$hygiene_severity == "Moderate"], na.rm = TRUE)
+mean_notable <- mean(logged_data$cleanliness_scale[logged_data$hygiene_severity == "Notable"], na.rm = TRUE)
+mean_severe <- mean(logged_data$cleanliness_scale[logged_data$hygiene_severity == "Severe"], na.rm = TRUE)
+mean_very_severe <- mean(logged_data$cleanliness_scale[logged_data$hygiene_severity == "Very Severe"], na.rm = TRUE)
+```
+
+The second graph shows the mean cleanliness rating (1-10) in relation to the hygiene category. From this, as the hygiene category increases with its severity, the average cleanliness rating tends to decrease. Therefore, the mean cleanliness rating for a hygiene category for minor is approximately `r round(mean_minor, 2)`, moderate is approximately `r round(mean_moderate, 2)`, notable is approximately `r round(mean_notable, 2)`, and severe is approximately `r round(mean_severe, 2)` rating.
+
+The very severe category was not recorded during the observation survey.
+More information regarding the no hygiene risk is under my project report.
+
+## The Thrid Graph
+
+![My third graph](plot3.png)
+```{r}
+mean_by_date <- logged_data %>%
+  group_by(Timestamp) %>%
+  summarise(mean_cleanliness = mean(cleanliness_scale, na.rm = TRUE))
+
+mean_by_date
+```
+The graph shows the mean cleanliness rating overtime during May. From this, there tends to be both an upward and downward trends with notable peaks. The mean of each day is presented above. 
+
+
+
+
